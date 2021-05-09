@@ -2,7 +2,7 @@ import
 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:s2_tictactoe/custom-dialog.dart';
-import 'package:s2_tictactoe/home_page.dart';
+import 'package:s2_tictactoe/beginner.dart';
 import 'game_button.dart';
 
 class HomePage extends StatefulWidget {
