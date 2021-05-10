@@ -2,9 +2,10 @@ import
 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:s2_tictactoe/custom-dialog.dart';
-import 'package:s2_tictactoe/beginner.dart';
-import 'game_button.dart';
+import 'package:s2_tictactoe/game Home_button.dart';
 
+import 'custom-dialog.dart';
+import 'game button.dart';
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => new _HomePageState();
@@ -12,7 +13,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<GameButton> buttonsList;
   var player1;
-  var player2;
+  var computerplayer;
   var activePlayer;
   @override
   void initState() {
@@ -22,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   }
   List<GameButton> doInit() {
     player1 = new List();
-    player2 = new List();
+    computerplayer = new List();
     activePlayer = 1;
     var gameButtons = <GameButton>[
       new GameButton(id: 1),
@@ -48,7 +49,7 @@ class _HomePageState extends State<HomePage> {
         gb.text = "0";
         gb.bg = Colors.black;
         activePlayer = 1;
-        player2.add(gb.id);
+        computerplayer.add(gb.id);
       }
       gb.enabled = false;
       int winner = checkWinner();
@@ -67,7 +68,7 @@ class _HomePageState extends State<HomePage> {
     var emptyCells = new List();
     var list = new List.generate(9, (i) => i + 1);
     for (var cellID in list) {
-      if (!(player1.contains(cellID) || player2.contains(cellID))) {
+      if (!(player1.contains(cellID) || computerplayer.contains(cellID))) {
         emptyCells.add(cellID);
       }
     }
@@ -82,54 +83,54 @@ class _HomePageState extends State<HomePage> {
     if (player1.contains(1) && player1.contains(2) && player1.contains(3)) {
       winner = 1;
     }
-    if (player2.contains(1) && player2.contains(2) && player2.contains(3)) {
+    if (computerplayer.contains(1) && computerplayer.contains(2) && computerplayer.contains(3)) {
       winner = 2;
     }
     // row 2
     if (player1.contains(4) && player1.contains(5) && player1.contains(6)) {
       winner = 1;
     }
-    if (player2.contains(4) && player2.contains(5) && player2.contains(6)) {
+    if (computerplayer.contains(4) && computerplayer.contains(5) && computerplayer.contains(6)) {
       winner = 2;
     }
     // row 3
     if (player1.contains(7) && player1.contains(8) && player1.contains(9)) {
       winner = 1;
     }
-    if (player2.contains(7) && player2.contains(8) && player2.contains(9)) {
+    if (computerplayer.contains(7) && computerplayer.contains(8) &&computerplayer.contains(9)) {
       winner = 2;
     }
     // col 1
     if (player1.contains(1) && player1.contains(4) && player1.contains(7)) {
       winner = 1;
     }
-    if (player2.contains(1) && player2.contains(4) && player2.contains(7)) {
+    if (computerplayer.contains(1) && computerplayer.contains(4) && computerplayer.contains(7)) {
       winner = 2;
     }
     // col 2
     if (player1.contains(2) && player1.contains(5) && player1.contains(8)) {
       winner = 1;
     }
-    if (player2.contains(2) && player2.contains(5) && player2.contains(8)) {winner = 2;
+    if (computerplayer.contains(2) && computerplayer.contains(5) && computerplayer.contains(8)) {winner = 2;
     }
     // col 3
     if (player1.contains(3) && player1.contains(6) && player1.contains(9)) {
       winner = 1;
     }
-    if (player2.contains(3) && player2.contains(6) && player2.contains(9)) {
+    if (computerplayer.contains(3) &&computerplayer.contains(6) && computerplayer.contains(9)) {
       winner = 2;
     }
     //diagonal
     if (player1.contains(1) && player1.contains(5) && player1.contains(9)) {
       winner = 1;
     }
-    if (player2.contains(1) && player2.contains(5) && player2.contains(9)) {
+    if (computerplayer.contains(1) && computerplayer.contains(5) && computerplayer.contains(9)) {
       winner = 2;
     }
     if (player1.contains(3) && player1.contains(5) && player1.contains(7)) {
       winner = 1;
     }
-    if (player2.contains(3) && player2.contains(5) && player2.contains(7)) {
+    if (computerplayer.contains(3) && computerplayer.contains(5) && computerplayer.contains(7)) {
       winner = 2;
     }
     if (winner != -1) {
@@ -141,7 +142,7 @@ class _HomePageState extends State<HomePage> {
       } else {
         showDialog(
             context: context,
-            builder: (_) => new CustomDialog("Player 2 Won",
+            builder: (_) => new CustomDialog("computer plyer Won",
                 "Press the reset button to start again.", resetGame));
       }
     }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:s2_tictactoe/beginner.dart';
+import 'package:s2_tictactoe/main.dart';
+
+import 'game Home_button.dart';
 void main() => runApp(new MyApp());
 class MyApp extends StatelessWidget {
   @override
